@@ -1,38 +1,59 @@
-.App {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    #4facfe,
+    #00f2fe
+  ); /* Fondo con gradiente */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+h1 {
   text-align: center;
+  color: white; /* Cambié el color para que contraste con el fondo */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Establecer un tamaño fijo para el contenedor */
+.bg-white {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px; /* Establecemos un tamaño fijo para evitar cambios */
+  transition: all 0.3s ease; /* Suaviza los cambios de tamaño */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Animación de fade-in al cambiar de tab */
+.tab-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.tab-content.active {
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+/* Agregar un efecto de deslizamiento para la transición */
+.tab-content-enter {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tab-content-enter-active {
+  transform: translateX(0);
+}
+
+.tab-content-exit {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tab-content-exit-active {
+  transform: translateX(100%);
 }

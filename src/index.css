@@ -1,4 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
+  @apply bg-gray-100 text-gray-800; /* Usa clases de Tailwind para estilos globales */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -8,6 +13,48 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  @apply font-mono text-sm; /* Usa Tailwind para fuentes de código */
+}
+
+/* Contenedor principal, mantiene un tamaño fijo */
+.bg-white {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px; /* Establecemos un tamaño fijo para evitar cambios */
+  transition: width 0.3s ease, height 0.3s ease; /* Suaviza los cambios de tamaño */
+  overflow: hidden;
+}
+
+/* Animación de fade-in para las tabs */
+.tab-content {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tab-content.active {
+  opacity: 1;
+}
+
+/* Agregamos transiciones suaves entre los cambios de contenido */
+.tab-content-enter {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tab-content-enter-active {
+  transform: translateX(0);
+}
+
+.tab-content-exit {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tab-content-exit-active {
+  transform: translateX(100%);
+}
+
+/* Agregar efecto de hover para botones */
+button:hover {
+  @apply bg-gray-300;
 }
